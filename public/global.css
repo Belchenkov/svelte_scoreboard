@@ -16,7 +16,7 @@
 }
 
 body {
-	font-family: 'Noto Sans JP', sans-serif;
+	font-family: 'Noto Sans JP';
 	font-size: 1rem;
 	line-height: 1.6;
 	background-color: #fff;
@@ -42,6 +42,7 @@ img {
 
 /* Utilities */
 .container {
+	font-family: 'Noto Sans JP';
 	max-width: 800px;
 	margin: auto;
 	overflow: hidden;
