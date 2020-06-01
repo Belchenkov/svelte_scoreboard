@@ -1,6 +1,6 @@
 <script>
-	let name = 'All';
-	let points = 100;
+	export let name;
+	export let points = 100;
 	let showControls = false;
 
 	const addPoint = () => points += 1;
