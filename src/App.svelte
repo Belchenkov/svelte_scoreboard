@@ -1,4 +1,6 @@
 <script>
+	import Navbar from './Navbar.svelte';
+
 	let name = 'All';
 	let points = 100;
 	let showControls = false;
@@ -8,11 +10,14 @@
 	const toggleControls = () => showControls = !showControls;
 </script>
 
+<Navbar />
 <div class="container">
 	<div class="card">
 		<h1>
 			{name}
-			<button class="btn btn-sm" on:click={toggleControls}>+</button>
+			<button class="btn btn-sm" on:click={toggleControls}>
+				{#if showControls}-{:else}+{/if}
+			</button>
 		</h1>
 		<h3>{points}</h3>
 		{#if showControls  }
