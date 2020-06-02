@@ -1,30 +1,50 @@
 <script>
-	export let name;
+	import Navbar from './Navbar.svelte';
+	import Player from './Player.svelte';
+	import AddPlayer from './AddPlayer.svelte';
+
+	let players = [
+		{
+			name: 'Make Smith',
+			points: 34
+		},
+		{
+			name: 'Jessica Will',
+			points: 56
+		},
+		{
+			name: 'Bob Carrol',
+			points: 26
+		}
+	];
+
+	const addPlayer = e => {
+		const newPlayer = e.detail;
+
+		players = [...players, newPlayer];
+	};
+
+	const removePlayer = e => {
+		players = players.filter(player => player.name !== e.detail);
+	};
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<Navbar />
+<div class="container">
+	<AddPlayer on:addplayer={addPlayer} />
+	{#if players.length === 0}
+		<p>No Players</p>
+	{:else}
+		{#each players as player}
+			<Player
+					name={player.name}
+					points={player.points}
+					on:removeplayer={removePlayer}
+			/>
+		{/each}
+	{/if}
+</div>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
